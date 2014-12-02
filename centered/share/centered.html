@@ -81,10 +81,11 @@
         <li>2.兼容IE8+</li>
         <li>3.可能在一些浏览器上有问题（特别是IE）</li>
     </ul>
-        由于兼容上的一些问题，这个方案，不太建议。
+    由于兼容上的一些问题，这个方案，不太建议。
     </p>
 
     <h2>方案五：行内块元素(inline-block)</h2>
+
     <p>
         思路为：期望在#container中:<code>text-align:center;</code>，在#center中：<code>vertical-align:middle;</code>达到目的，但是#center却无法撑开#container，咋办呢？
         可以在#container里面加入一个多余的display为inline-block的div（作为#container的一个child），将#container的高度撑开，就像这样：
@@ -93,19 +94,43 @@
         <img src="images/inline-block.png" alt="xxx" class="img-thumnail block"><br>
         但是，还存在如下两个问题：
     <ul>
-        <li>由于两个inline-block的元素之间默认是有间隙的，所以需要在#center中margin-right为负值或者在#container中font-size:0px;（如果#center为图片的情况下）进行调整</li>
+        <li>
+            由于两个inline-block的元素之间默认是有间隙的，所以需要在#center中margin-right为负值或者在#container中font-size:0px;（如果#center为图片的情况下）进行调整
+        </li>
         <li>#center的宽度不能大于<b>#container的100%-间隙</b>，否则before将会被挤走</li>
     </ul>
     </p>
 
     <h2>方案六：Flexbox</h2>
+
     <p>
         这个应该是最简单的，如下：
         <img src="images/flex.png" alt="xxx" class="img-thumnail block"><br>
         原理为：margin:auto;自动获取伸缩容器中剩余的空间，设置垂直方向margin值为auto，可以使伸缩项目在伸缩容器的两上轴方向都完全集中。我觉得，实际上相当于这样：
         <img src="images/flex-more.png" alt="xxx" class="img-thumnail block"><br>
-        关于Flexbox，请参见 <a href="http://www.w3cplus.com/css3/a-guide-to-flexbox.html" target="_blank">这里</a>
+        关于Flexbox，请参见 <a href="http://www.w3cplus.com/css3/a-guide-to-flexbox.html" target="_blank">这里</a><br>
+        但是flex的缺点也是显而易见的，不支持老旧的浏览器。
     </p>
+
+    <h2>总结</h2>
+
+    <p>
+        以上各种方案，各有优缺，希望大家赶紧提建议，我也将能够通用的代码全部整到了github上（<a href="https://github.com/lonelyclick/common"
+                                                        target="_blank">这里</a>）
+    </p>
+
+    <h2>参考</h2>
+    <ul>
+        <li>http://www.smashingmagazine.com/2013/08/09/absolute-horizontal-vertical-centering-css/</li>
+        <li>http://www.w3cplus.com/css3/a-guide-to-flexbox.html</li>
+        <li>http://www.smashingmagazine.com/2013/05/22/centering-elements-with-flexbox/</li>
+        <li>http://www.zhangxinxu.com/wordpress/2010/10/%E6%88%91%E6%89%80%E7%9F%A5%E9%81%93%E7%9A%84%E5%87%A0%E7%A7%8Ddisplaytable-cell%E7%9A%84%E5%BA%94%E7%94%A8/</li>
+        <li>http://www.zhangxinxu.com/wordpress/2013/11/margin-auto-absolute-%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D-%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/</li>
+        <li>http://www.zhangxinxu.com/wordpress/2009/08/%E5%A4%A7%E5%B0%8F%E4%B8%8D%E5%9B%BA%E5%AE%9A%E7%9A%84%E5%9B%BE%E7%89%87%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E5%AD%97%E7%9A%84%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/</li>
+        <li>http://designshack.net/articles/css/how-to-center-anything-with-css</li>
+        <li>http://css-tricks.com/centering-in-the-unknown/</li>
+        <li>https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform</li>
+    </ul>
 </div>
 </body>
 </html>
